@@ -2,6 +2,7 @@
 use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\NewPasswordController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -25,9 +26,7 @@ Route::post('reset-password', [NewPasswordController::class, 'reset']);
 
 Route::middleware('auth:sanctum')->group (function() {
     Route::apiResource('daftar', DataController::class);
-    Route::post('/daftar/{id}', [DataController::class, 'update']);
-    Route::get('/kategori', [DataController::class, 'kategori']);
-    Route::post('/kategori', [DataController::class, 'kategori']);
+    Route::apiResource('/kategori', DataController::class);
 });
 
 
